@@ -139,6 +139,17 @@ class SiteGenerator {
 	}
 
 	/**
+	 * Sets the filename to use for the not found (404) page
+	 * @param filename The filename to use for the not found page
+	 * @returns This, to be used fluently
+	 */
+	public setNotFoundFilename(filename: string) {
+		this.notFoundFilename = filename
+
+		return this
+	}
+
+	/**
 	 * Sets a renderer for a route.
 	 * If the route ends with a trailing slash, {@link indexFilename} will be appended to it internally at build/serve time.
 	 * @param route The route
@@ -152,6 +163,21 @@ class SiteGenerator {
 	}
 
 	/**
+	 * Maps a route to a static resource directory
+	 * @param route The route where the resources will be served from
+	 * @param directory The directory that will be the source of the static files
+	 * @returns This, to be used fluently
+	 */
+	public mapStatic(route: string, directory: string) {
+		if (!route.endsWith('/'))
+			throw new Error('Static routes must end with a trailing slash (using "/" is valid for root)')
+
+		this.staticMappings.set(route, directory)
+
+		return this
+	}
+
+	/**
 	 * Sets a renderer for the not found (404) page
 	 * @param renderer The renderer for the not found page
 	 * @returns This, to be used fluently
@@ -160,6 +186,10 @@ class SiteGenerator {
 		this.routes.set('/' + this.notFoundFilename, renderer)
 
 		return this
+	}
+
+	public async build(outDir: string): Promise<void> {
+		// TODO Copy static files first so that routes will overwrite files if they have the same name
 	}
 
 	/**
