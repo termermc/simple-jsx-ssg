@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"target": "ESNext",
+		"lib": ["ESNext"],
+		"jsx": "react-jsx",
+		"moduleResolution": "Bundler",
+		"types": ["bun-types"],
+		"moduleDetection": "force",
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"esModuleInterop": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+	},
+	"include": [
+		"src/**/*",
+		"index.tsx"
+	],
+	"exclude": ["**/*.spec.ts"]
+}
