@@ -2,12 +2,12 @@
 Simple, programmatic SSG using JSX (or TSX) for [Bun](https://bun.sh/)
 
 # Features
- - TypeScript support without a build step
- - JSX/TSX support without a build step
- - [Development webserver](#development-server) to test changes without building
-   - Support for [hot code reloading](#hot-code-reloading)
- - Can be embedded in larger applications
- - Fully programmatic
+- TypeScript support without a build step
+- JSX/TSX support without a build step
+- [Development webserver](#development-server) to test changes without building
+    - Support for [hot code reloading](#hot-code-reloading)
+- Can be embedded in larger applications
+- Fully programmatic
 
 # Who Is This For?
 This library is for people who like raw HTML and CSS, but also want components and templating.
@@ -45,10 +45,10 @@ function BasePage(props: { title: string, children: any }) {
 			<title>{props.title}</title>
 		</head>
 		<body>
-           <h1>{props.title}</h1>
-           {props.children}
-           <hr/>
-           <p>Site rendered at: {renderDate}</p>
+		    <h1>{props.title}</h1>
+            <div id="content">{props.children}</div>
+		    <hr/>
+		    <p>Site rendered at: {renderDate}</p>
 		</body>
 		</html>
 	)
@@ -92,10 +92,10 @@ This webserver is not meant for production, and does not expose request data to 
 If you run Bun with the `--hot` option, you can take advantage of hot code reloading while using the development server.
 
 There are some limitations though:
- - Hot code reloading isn't guaranteed to reload module imports
- - It will not reload markup in your entrypoint script
-   - If you want hot code reloading for JSX, provide a path to a module when using `setRoute` and `setNotFound`.
-   - You can also use `moduleRenderer`.
+- Hot code reloading isn't guaranteed to reload module imports
+- It will not reload markup in your entrypoint script
+    - If you want hot code reloading for JSX, provide a path to a module when using `setRoute` and `setNotFound`.
+    - You can also use `moduleRenderer`.
 
 If you're having problems with hot reloading, you can also use Bun's `--watch` option to restart the entire process on module changes.
 This is less desirable, but it will ensure that everything is updated.
