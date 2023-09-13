@@ -45,10 +45,10 @@ function BasePage(props: { title: string, children: any }) {
 			<title>{props.title}</title>
 		</head>
 		<body>
-		<h1>{props.title}</h1>
-		{props.children}
-		<hr/>
-		<p>Site rendered at: {renderDate}</p>
+           <h1>{props.title}</h1>
+           {props.children}
+           <hr/>
+           <p>Site rendered at: {renderDate}</p>
 		</body>
 		</html>
 	)
